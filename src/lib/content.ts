@@ -114,6 +114,8 @@ export type MediaItem =
   | { type: "stl"; src: string; caption?: string }
   | { type: "pdf"; src: string; caption?: string };
 
+export type CodeLink = { label: string; url: string };
+
 export type Project = {
   slug: string;
   title: string;
@@ -123,6 +125,7 @@ export type Project = {
   bullets: string[];
   media: MediaItem[];
   featured: boolean;
+  links?: CodeLink[];
 };
 
 export const projects: Project[] = [
@@ -168,6 +171,13 @@ export const projects: Project[] = [
     ],
     media: [],
     featured: true,
+    links: [
+      { label: "Final Challenge", url: "https://github.com/rss2026-7/final_challenge2026" },
+      { label: "Visual Servoing", url: "https://github.com/rss2026-7/visual_servoing_pkg" },
+      { label: "Wall Follower", url: "https://github.com/rss2026-7/wall_follower_pkg" },
+      { label: "Path Planning", url: "https://github.com/rss2026-7/path_planning_pkg" },
+      { label: "Safety Controller", url: "https://github.com/rss2026-7/safety_controller_pkg" },
+    ],
   },
   {
     slug: "modular-robot-hardware",
