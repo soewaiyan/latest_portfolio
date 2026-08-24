@@ -1,6 +1,7 @@
 export const profile = {
   name: "Soe Wai Yan",
   tagline: "Robotics & Computer Vision · MIT EECS",
+  motto: "If it doesn't work on real hardware, it doesn't work.",
   bio:
     "I'm an MIT EECS student building perception and manipulation pipelines for real robots — vision-guided arms, autonomous racecars, and embedded sensing systems. I like taking a project from raw camera frames to a physical actuator moving in the real world.",
   email: "waiyan@mit.edu",

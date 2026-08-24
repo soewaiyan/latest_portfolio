@@ -8,9 +8,13 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 export default function STLViewer({
   src,
   caption,
+  bare = false,
+  heightRatio = 0.75,
 }: {
   src: string;
   caption?: string;
+  bare?: boolean;
+  heightRatio?: number;
 }) {
   const mountRef = useRef<HTMLDivElement>(null);
 
@@ -19,7 +23,7 @@ export default function STLViewer({
     if (!mount) return;
 
     const width = mount.clientWidth;
-    const height = mount.clientWidth * 0.75;
+    const height = mount.clientWidth * heightRatio;
 
     const scene = new THREE.Scene();
     scene.background = null;
@@ -51,9 +55,9 @@ export default function STLViewer({
       geometry.computeVertexNormals();
 
       const material = new THREE.MeshStandardMaterial({
-        color: 0x6b7280,
-        metalness: 0.2,
-        roughness: 0.6,
+        color: 0xd9ad63,
+        metalness: 0.25,
+        roughness: 0.55,
       });
       mesh = new THREE.Mesh(geometry, material);
       scene.add(mesh);
@@ -74,7 +78,7 @@ export default function STLViewer({
 
     const handleResize = () => {
       const w = mount.clientWidth;
-      const h = mount.clientWidth * 0.75;
+      const h = mount.clientWidth * heightRatio;
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
       renderer.setSize(w, h);
@@ -89,13 +93,17 @@ export default function STLViewer({
       mesh?.geometry.dispose();
       mount.removeChild(renderer.domElement);
     };
-  }, [src]);
+  }, [src, heightRatio]);
+
+  if (bare) {
+    return <div ref={mountRef} className="w-full" />;
+  }
 
   return (
-    <figure className="overflow-hidden rounded-xl border border-black/10 bg-black/5 dark:border-white/10 dark:bg-white/5">
+    <figure className="overflow-hidden rounded-xl border border-card-border bg-card">
       <div ref={mountRef} className="w-full" />
       {caption && (
-        <figcaption className="px-3 py-2 text-sm text-black/60 dark:text-white/60">
+        <figcaption className="px-3 py-2 text-sm text-muted">
           {caption} · drag to rotate
         </figcaption>
       )}

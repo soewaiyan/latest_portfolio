@@ -20,22 +20,18 @@ export default async function ProjectPage({
     <div className="mx-auto max-w-4xl px-6 py-16">
       <Link
         href="/#projects"
-        className="text-sm text-black/50 hover:text-black dark:text-white/50 dark:hover:text-white"
+        className="text-sm text-muted hover:text-accent"
       >
         ← Back to projects
       </Link>
 
-      <div className="mt-6 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-        <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-          {project.title}
-        </h1>
-        <p className="text-xs uppercase tracking-wide text-black/50 dark:text-white/50">
-          {project.dates}
-        </p>
-      </div>
-      <p className="mt-1 text-sm text-black/60 dark:text-white/60">
-        {project.stack}
+      <p className="mt-6 text-xs font-medium tracking-[0.3em] text-accent">
+        {project.dates.toUpperCase()}
       </p>
+      <h1 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">
+        {project.title}
+      </h1>
+      <p className="mt-2 text-sm text-muted">{project.stack}</p>
 
       {project.media.length > 0 && (
         <div className="mt-8">
@@ -43,7 +39,7 @@ export default async function ProjectPage({
         </div>
       )}
 
-      <ul className="mt-8 list-disc space-y-2 pl-5 text-sm leading-relaxed text-black/80 dark:text-white/80">
+      <ul className="mt-8 list-disc space-y-2 pl-5 text-sm leading-relaxed text-foreground/80">
         {project.bullets.map((b, i) => (
           <li key={i}>{b}</li>
         ))}

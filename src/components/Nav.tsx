@@ -1,38 +1,40 @@
 import Link from "next/link";
+import ThemeToggle from "./ThemeToggle";
 import { profile } from "@/lib/content";
+
+const initials = profile.name
+  .split(" ")
+  .map((w) => w[0])
+  .join("")
+  .slice(0, 2)
+  .toUpperCase();
 
 export default function Nav() {
   return (
-    <header className="sticky top-0 z-10 border-b border-black/10 bg-white/80 backdrop-blur dark:border-white/10 dark:bg-black/80">
-      <nav className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
-        <Link href="/" className="font-medium tracking-tight">
-          {profile.name}
+    <div className="sticky top-4 z-20 mx-auto flex max-w-3xl justify-center px-4">
+      <nav className="flex w-full items-center justify-between gap-2 rounded-full border border-card-border bg-card/80 px-3 py-2 shadow-lg shadow-black/10 backdrop-blur-md">
+        <Link
+          href="/"
+          className="flex h-9 w-9 items-center justify-center rounded-full bg-accent-soft text-sm font-semibold text-accent"
+        >
+          {initials}
         </Link>
-        <div className="flex items-center gap-5 text-sm text-black/70 dark:text-white/70">
-          <a href="/#projects" className="hover:text-black dark:hover:text-white">
-            Projects
-          </a>
-          <a href="/#experience" className="hover:text-black dark:hover:text-white">
-            Experience
-          </a>
+        <div className="hidden items-center gap-5 text-sm text-muted sm:flex">
+          <a href="/#about" className="transition hover:text-foreground">About</a>
+          <a href="/#experience" className="transition hover:text-foreground">Experience</a>
+          <a href="/#projects" className="transition hover:text-foreground">Projects</a>
           <a
             href={profile.resumeUrl}
             target="_blank"
             rel="noreferrer"
-            className="hover:text-black dark:hover:text-white"
+            className="transition hover:text-foreground"
           >
             Resume
           </a>
-          <a
-            href={profile.github}
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-black dark:hover:text-white"
-          >
-            GitHub
-          </a>
+          <a href="/#contact" className="transition hover:text-foreground">Contact</a>
         </div>
+        <ThemeToggle />
       </nav>
-    </header>
+    </div>
   );
 }

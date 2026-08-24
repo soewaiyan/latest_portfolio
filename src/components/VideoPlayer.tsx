@@ -8,7 +8,7 @@ export default function VideoPlayer({
   caption?: string;
 }) {
   return (
-    <figure className="overflow-hidden rounded-xl border border-black/10 bg-black/5 dark:border-white/10 dark:bg-white/5">
+    <figure className="overflow-hidden rounded-xl border border-card-border bg-card">
       <video
         className="aspect-video w-full bg-black object-contain"
         controls
@@ -19,7 +19,7 @@ export default function VideoPlayer({
         <source src={src} type="video/mp4" />
       </video>
       {caption && (
-        <figcaption className="px-3 py-2 text-sm text-black/60 dark:text-white/60">
+        <figcaption className="px-3 py-2 text-sm text-muted">
           {caption}
         </figcaption>
       )}

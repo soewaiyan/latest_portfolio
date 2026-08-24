@@ -1,4 +1,8 @@
 import ProjectCard from "@/components/ProjectCard";
+import SectionHeading from "@/components/SectionHeading";
+import ExperienceAccordion from "@/components/ExperienceAccordion";
+import HeroModel from "@/components/HeroModel";
+import { MailIcon, LinkedInIcon, GitHubIcon } from "@/components/SocialIcons";
 import { profile, education, experience, projects, skills } from "@/lib/content";
 
 export default function Home() {
@@ -6,40 +10,82 @@ export default function Home() {
   const more = projects.filter((p) => !p.featured);
 
   return (
-    <div className="mx-auto max-w-4xl px-6">
+    <div className="mx-auto max-w-5xl px-6">
       {/* Hero */}
-      <section className="py-20 sm:py-28">
-        <p className="text-sm font-medium text-black/50 dark:text-white/50">
-          {profile.tagline}
-        </p>
-        <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
-          {profile.name}
-        </h1>
-        <p className="mt-6 max-w-2xl text-base leading-relaxed text-black/70 dark:text-white/70">
-          {profile.bio}
-        </p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <a
-            href={profile.resumeUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-full bg-black px-5 py-2.5 text-sm font-medium text-white transition hover:opacity-85 dark:bg-white dark:text-black"
-          >
-            Download Résumé
-          </a>
-          <a
-            href={`mailto:${profile.email}`}
-            className="rounded-full border border-black/15 px-5 py-2.5 text-sm font-medium transition hover:border-black/40 dark:border-white/20 dark:hover:border-white/40"
-          >
-            Get in touch
-          </a>
+      <section className="grid grid-cols-1 items-center gap-12 py-16 sm:py-24 md:grid-cols-2 md:gap-16">
+        <div>
+          <div className="flex items-center gap-3 text-xs font-medium tracking-[0.3em] text-accent">
+            <span className="h-px w-8 bg-accent/60" />
+            HI, MY NAME IS
+          </div>
+          <h1 className="mt-4 text-5xl font-extrabold tracking-tight sm:text-6xl">
+            {profile.name}
+          </h1>
+          <p className="mt-3 text-sm font-medium tracking-[0.25em] text-muted">
+            ROBOTICS & COMPUTER VISION
+          </p>
+          <p className="mt-6 max-w-md text-base leading-relaxed text-foreground/80">
+            {profile.bio}
+          </p>
+          <p className="mt-5 text-accent italic">&ldquo;{profile.motto}&rdquo;</p>
+
+          <div className="mt-8 h-px w-full bg-card-border" />
+
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <a
+              href={profile.resumeUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-background transition hover:opacity-85"
+            >
+              Download Résumé
+            </a>
+            <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 rounded-full border border-card-border px-5 py-2.5 text-sm font-medium transition hover:border-accent/60"
+            >
+              <LinkedInIcon /> LinkedIn
+            </a>
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 rounded-full border border-card-border px-5 py-2.5 text-sm font-medium transition hover:border-accent/60"
+            >
+              <GitHubIcon /> GitHub
+            </a>
+          </div>
+        </div>
+        <HeroModel />
+      </section>
+
+      {/* About */}
+      <section id="about" className="scroll-mt-24 py-16">
+        <SectionHeading eyebrow="About" title="A bit about me" />
+        <div className="mx-auto mt-8 max-w-2xl space-y-4 text-center text-base leading-relaxed text-foreground/80">
+          <p>{profile.bio}</p>
+          <p>
+            I&apos;m studying {education.degree} at {education.school},
+            graduating {education.graduation}, with coursework spanning{" "}
+            {education.coursework.join(", ")}.
+          </p>
+        </div>
+      </section>
+
+      {/* Experience */}
+      <section id="experience" className="scroll-mt-24 py-16">
+        <SectionHeading eyebrow="Experience" title="Where I've worked" />
+        <div className="mx-auto mt-10 max-w-3xl">
+          <ExperienceAccordion items={experience} />
         </div>
       </section>
 
       {/* Projects */}
-      <section id="projects" className="scroll-mt-20 py-10">
-        <h2 className="text-xl font-semibold tracking-tight">Projects</h2>
-        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <section id="projects" className="scroll-mt-24 py-16">
+        <SectionHeading eyebrow="Projects" title="What I've built" />
+        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
           {featured.map((p) => (
             <ProjectCard key={p.slug} project={p} />
           ))}
@@ -47,10 +93,10 @@ export default function Home() {
 
         {more.length > 0 && (
           <>
-            <h3 className="mt-10 text-sm font-medium text-black/50 dark:text-white/50">
-              More
-            </h3>
-            <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <p className="mt-12 text-center text-xs tracking-[0.3em] text-muted">
+              MORE
+            </p>
+            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
               {more.map((p) => (
                 <ProjectCard key={p.slug} project={p} />
               ))}
@@ -59,66 +105,20 @@ export default function Home() {
         )}
       </section>
 
-      {/* Experience */}
-      <section id="experience" className="scroll-mt-20 py-16">
-        <h2 className="text-xl font-semibold tracking-tight">Experience</h2>
-        <div className="mt-6 flex flex-col gap-10">
-          {experience.map((e) => (
-            <div key={e.org}>
-              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                <h3 className="text-base font-medium">{e.org}</h3>
-                <p className="text-xs uppercase tracking-wide text-black/50 dark:text-white/50">
-                  {e.dates}
-                </p>
-              </div>
-              <p className="text-sm text-black/60 dark:text-white/60">
-                {e.role}
-                {e.stack ? ` · ${e.stack}` : ""} · {e.location}
-              </p>
-              <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-black/75 dark:text-white/75">
-                {e.bullets.map((b, i) => (
-                  <li key={i}>{b}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Education */}
-      <section className="py-10">
-        <h2 className="text-xl font-semibold tracking-tight">Education</h2>
-        <div className="mt-6">
-          <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-            <h3 className="text-base font-medium">{education.school}</h3>
-            <p className="text-xs uppercase tracking-wide text-black/50 dark:text-white/50">
-              {education.graduation}
-            </p>
-          </div>
-          <p className="text-sm text-black/60 dark:text-white/60">
-            {education.degree} · GPA {education.gpa}
-          </p>
-          <p className="mt-3 text-sm leading-relaxed text-black/75 dark:text-white/75">
-            <span className="font-medium">Relevant coursework:</span>{" "}
-            {education.coursework.join(", ")}
-          </p>
-        </div>
-      </section>
-
       {/* Skills */}
-      <section id="skills" className="scroll-mt-20 py-10 pb-24">
-        <h2 className="text-xl font-semibold tracking-tight">Skills</h2>
-        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+      <section id="skills" className="scroll-mt-24 py-16">
+        <SectionHeading eyebrow="Skills" title="Tools I work with" />
+        <div className="mx-auto mt-10 grid max-w-3xl grid-cols-1 gap-8 sm:grid-cols-2">
           {skills.map((s) => (
             <div key={s.category}>
-              <h3 className="text-sm font-medium text-black/50 dark:text-white/50">
+              <h3 className="text-sm font-semibold text-accent">
                 {s.category}
               </h3>
-              <div className="mt-2 flex flex-wrap gap-2">
+              <div className="mt-3 flex flex-wrap gap-2">
                 {s.items.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-black/10 px-3 py-1 text-xs text-black/75 dark:border-white/10 dark:text-white/75"
+                    className="rounded-full border border-card-border px-3 py-1 text-xs text-foreground/80"
                   >
                     {item}
                   </span>
@@ -126,6 +126,42 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="scroll-mt-24 py-16 pb-28 text-center">
+        <SectionHeading eyebrow="Contact" title="Let's talk" />
+        <p className="mx-auto mt-4 max-w-md text-foreground/75">
+          Have an internship, research opportunity, or project in mind?
+          I&apos;m an email away.
+        </p>
+        <div className="mt-8 flex items-center justify-center gap-4">
+          <a
+            href={`mailto:${profile.email}`}
+            aria-label="Email"
+            className="flex h-12 w-12 items-center justify-center rounded-full border border-card-border text-foreground/70 transition hover:border-accent/60 hover:text-accent"
+          >
+            <MailIcon />
+          </a>
+          <a
+            href={profile.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+            className="flex h-12 w-12 items-center justify-center rounded-full border border-card-border text-foreground/70 transition hover:border-accent/60 hover:text-accent"
+          >
+            <LinkedInIcon />
+          </a>
+          <a
+            href={profile.github}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub"
+            className="flex h-12 w-12 items-center justify-center rounded-full border border-card-border text-foreground/70 transition hover:border-accent/60 hover:text-accent"
+          >
+            <GitHubIcon />
+          </a>
         </div>
       </section>
     </div>
