@@ -284,7 +284,7 @@ export const projects: Project[] = [
         caption: "App walkthrough",
       },
     ],
-    featured: false,
+    featured: true,
     links: [
       { label: "Slides", url: "https://pitch.com/v/busmate-58bd7h", icon: "external" },
     ],
