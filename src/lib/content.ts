@@ -140,7 +140,7 @@ export const projects: Project[] = [
     cover: "/media/elevator/cover.jpg",
     bullets: [
       "Detected the button in 2D with a temporal tracker that smooths out per-frame jitter before any detection is trusted, then back-projected the pixel through the depth image into a real 3D point in the arm's own coordinate frame",
-      "Kept the camera-to-arm calibration live through ROS's TF tree instead of hardcoding the matrix — a labmate updated the underlying calibration mid-project, and the hardcoded version would have silently gone stale while the TF-based lookup picked up the change automatically",
+      "Kept the camera-to-arm calibration live through ROS's TF tree instead of hardcoding the matrix — when the calibration was updated mid-project, the TF-based lookup picked up the change automatically instead of silently going stale",
       "Diagnosed an intermittent low-level fault on the direct hardware connection that didn't isolate to one clean trigger (a mode switch, a real Cartesian move, or even the enable sequence could each set it off independently); built a diagnostic script that isolates the exact triggering command and exercises every recovery path the vendor SDK exposes, and routed execution through an already-validated ROS 2 control node instead of continuing to chase it at the firmware level",
       "Traced a systematic depth/height error to the wrong correction frame: nudging the end-effector's tool offset (which lives in the flange's local frame, not the true approach direction) fixed depth but quietly introduced sideways error; moving the correction into the camera's own depth axis, before the extrinsic transform, fixed it cleanly",
     ],
