@@ -9,14 +9,14 @@ function Thumbnail({ project }: { project: Project }) {
       <img
         src={first.poster}
         alt={project.title}
-        className="h-44 w-full object-cover"
+        className="aspect-[3/4] w-full object-cover"
       />
     );
   }
 
   if (first?.type === "stl") {
     return (
-      <div className="flex h-44 w-full items-center justify-center bg-gradient-to-br from-accent-soft to-transparent">
+      <div className="flex aspect-[3/4] w-full items-center justify-center bg-gradient-to-br from-accent-soft to-transparent">
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-accent">
           <path d="M12 2 3 7l9 5 9-5-9-5Z" />
           <path d="M3 7v10l9 5 9-5V7" />
@@ -27,7 +27,7 @@ function Thumbnail({ project }: { project: Project }) {
   }
 
   return (
-    <div className="flex h-44 w-full items-center justify-center bg-gradient-to-br from-accent-soft to-transparent">
+    <div className="flex aspect-[3/4] w-full items-center justify-center bg-gradient-to-br from-accent-soft to-transparent">
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-accent">
         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
         <path d="M14 2v6h6" />

@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #070a12;
+  --background: #171d30;
   --foreground: #f2f1ec;
-  --card: #0d1220;
-  --card-border: rgba(255, 255, 255, 0.09);
-  --muted: rgba(242, 241, 236, 0.62);
+  --card: #1f2740;
+  --card-border: rgba(255, 255, 255, 0.12);
+  --muted: rgba(242, 241, 236, 0.65);
   --accent: #d9ad63;
-  --accent-soft: rgba(217, 173, 99, 0.12);
+  --accent-soft: rgba(217, 173, 99, 0.14);
 }
 
 [data-theme="light"] {

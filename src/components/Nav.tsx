@@ -20,9 +20,8 @@ export default function Nav() {
           {initials}
         </Link>
         <div className="hidden items-center gap-5 text-sm text-muted sm:flex">
-          <a href="/#about" className="transition hover:text-foreground">About</a>
-          <a href="/#experience" className="transition hover:text-foreground">Experience</a>
           <a href="/#projects" className="transition hover:text-foreground">Projects</a>
+          <a href="/#skills" className="transition hover:text-foreground">Skills</a>
           <a
             href={profile.resumeUrl}
             target="_blank"
@@ -31,7 +30,6 @@ export default function Nav() {
           >
             Resume
           </a>
-          <a href="/#contact" className="transition hover:text-foreground">Contact</a>
         </div>
         <ThemeToggle />
       </nav>
