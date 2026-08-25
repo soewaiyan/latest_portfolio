@@ -1,6 +1,6 @@
 import ProjectCard from "@/components/ProjectCard";
 import SectionHeading from "@/components/SectionHeading";
-import HeroModel from "@/components/HeroModel";
+import HeroPhoto from "@/components/HeroPhoto";
 import { LinkedInIcon, GitHubIcon } from "@/components/SocialIcons";
 import { profile, projects, skills } from "@/lib/content";
 
@@ -48,7 +48,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <HeroModel />
+        <HeroPhoto />
       </section>
 
       {/* Projects */}
