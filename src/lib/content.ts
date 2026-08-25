@@ -135,11 +135,12 @@ export const projects: Project[] = [
     dates: "June 2026 – Present",
     stack: "ROS 2, Computer Vision, Perception, Manipulation",
     summary:
-      "An end-to-end vision-guided pipeline enabling a 7-DoF bimanual robot arm to autonomously locate and press elevator call buttons.",
+      "A vision-guided pipeline that finds and presses an elevator call button using only a depth camera and a calibrated extrinsic — no fiducial markers, no pre-mapped environment.",
     bullets: [
-      "Built an end-to-end vision-guided pipeline enabling a 7-DoF bimanual robot arm (AgileX Nero ALOHA) to autonomously locate and press elevator call buttons, from RGB-D detection to physical actuation",
-      "Developed a real-time 2D button detector with temporal smoothing, then backprojected pixels to 3D using depth and a calibrated camera-to-arm extrinsic transform",
-      "Implemented Cartesian motion execution over ROS 2 with TCP-offset calibration and pose-feedback verification; diagnosed and resolved low-level hardware faults (CAN-bus tuning, motor brake-release timing, fault recovery)",
+      "Detected the button in 2D with a temporal tracker that smooths out per-frame jitter before any detection is trusted, then back-projected the pixel through the depth image into a real 3D point in the arm's own coordinate frame",
+      "Kept the camera-to-arm calibration live through ROS's TF tree instead of hardcoding the matrix — a labmate updated the underlying calibration mid-project, and the hardcoded version would have silently gone stale while the TF-based lookup picked up the change automatically",
+      "Diagnosed an intermittent low-level fault on the direct hardware connection that didn't isolate to one clean trigger (a mode switch, a real Cartesian move, or even the enable sequence could each set it off independently); built a diagnostic script that isolates the exact triggering command and exercises every recovery path the vendor SDK exposes, and routed execution through an already-validated ROS 2 control node instead of continuing to chase it at the firmware level",
+      "Traced a systematic depth/height error to the wrong correction frame: nudging the end-effector's tool offset (which lives in the flange's local frame, not the true approach direction) fixed depth but quietly introduced sideways error; moving the correction into the camera's own depth axis, before the extrinsic transform, fixed it cleanly",
     ],
     media: [
       {
@@ -147,6 +148,13 @@ export const projects: Project[] = [
         src: "/media/elevator/demo1.mp4",
         poster: "/media/elevator/demo1-poster.jpg",
         caption: "Arm locating and pressing an elevator call button",
+      },
+      {
+        type: "video",
+        src: "/media/elevator/demo1-cv-zoom.mp4",
+        poster: "/media/elevator/demo1-cv-zoom-poster.jpg",
+        caption:
+          "Zoomed on the onboard CV overlay: 2D UP/DOWN button detection, filtered over time before being trusted and back-projected to 3D",
       },
       {
         type: "video",
