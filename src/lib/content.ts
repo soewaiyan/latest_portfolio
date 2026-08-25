@@ -126,6 +126,7 @@ export type Project = {
   media: MediaItem[];
   featured: boolean;
   links?: CodeLink[];
+  cover?: string;
 };
 
 export const projects: Project[] = [
@@ -136,6 +137,7 @@ export const projects: Project[] = [
     stack: "ROS 2, Computer Vision, Perception, Manipulation",
     summary:
       "A vision-guided pipeline that finds and presses an elevator call button using only a depth camera and a calibrated extrinsic — no fiducial markers, no pre-mapped environment.",
+    cover: "/media/elevator/cover.jpg",
     bullets: [
       "Detected the button in 2D with a temporal tracker that smooths out per-frame jitter before any detection is trusted, then back-projected the pixel through the depth image into a real 3D point in the arm's own coordinate frame",
       "Kept the camera-to-arm calibration live through ROS's TF tree instead of hardcoding the matrix — a labmate updated the underlying calibration mid-project, and the hardcoded version would have silently gone stale while the TF-based lookup picked up the change automatically",

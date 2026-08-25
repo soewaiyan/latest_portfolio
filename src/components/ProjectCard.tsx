@@ -4,6 +4,16 @@ import type { Project } from "@/lib/content";
 function Thumbnail({ project }: { project: Project }) {
   const first = project.media[0];
 
+  if (project.cover) {
+    return (
+      <img
+        src={project.cover}
+        alt={project.title}
+        className="aspect-video w-full object-cover"
+      />
+    );
+  }
+
   if (first?.type === "video") {
     return (
       <img
