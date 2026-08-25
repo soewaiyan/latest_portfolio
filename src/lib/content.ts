@@ -168,6 +168,30 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: "drill-pickup",
+    title: "Drill Pick-Up — Diagnosing a VLA Policy in Production",
+    dates: "June 2026 – Present",
+    stack: "π0.5 (OpenPI), PyTorch, ROS 2, Imitation Learning",
+    summary:
+      "Debugging real-hardware inference for a fine-tuned π0.5 vision-language-action policy picking up a drill with a 7-DoF arm — tracking down an intermittent miss that only showed up on real hardware.",
+    cover: "/media/drill/cover.jpg",
+    bullets: [
+      "Ran and debugged real-hardware inference for a fine-tuned π0.5 vision-language-action policy picking up a drill with a 7-DoF arm, split across a GPU-side policy server and a ROS 2 control node talking over a local socket",
+      "Traced an intermittent, real-hardware-only failure — the arm would sometimes miss the drill with no obvious pattern — to nondeterministic replanning: a fresh action chunk was swapped in the instant background inference finished, so the swap point drifted with GPU timing jitter instead of the task itself",
+      "Reworked the control loop to a deterministic fixed-horizon consumption pattern, matching the approach openpi's own reference clients use, so the arm always finishes the same number of steps of its current plan before a swap is considered",
+      "Caught a regression in the first version of that fix — forcing every swap to block until the next chunk was ready made the arm stutter noticeably more; fixed it by keeping the prefetch that hides inference latency while still making the swap point fixed and never early",
+    ],
+    media: [
+      {
+        type: "video",
+        src: "/media/drill/demo.mp4",
+        poster: "/media/drill/demo-poster.jpg",
+        caption: "π0.5 policy picking up the drill on real hardware",
+      },
+    ],
+    featured: true,
+  },
+  {
     slug: "autonomous-racecar",
     title: "Autonomous Racecar Perception & Control",
     dates: "Feb 2026 – March 2026",
@@ -271,12 +295,6 @@ export const projects: Project[] = [
         src: "/media/rss/demo2.mp4",
         poster: "/media/rss/demo2-poster.jpg",
         caption: "Final lab project",
-      },
-      {
-        type: "video",
-        src: "/media/drill/demo.mp4",
-        poster: "/media/drill/demo-poster.jpg",
-        caption: "Lab demo",
       },
     ],
     featured: false,
