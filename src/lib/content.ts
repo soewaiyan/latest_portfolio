@@ -203,7 +203,20 @@ export const projects: Project[] = [
       "Designed a LiDAR wall-following controller (PD control + RANSAC line fitting) and an independent >180°-FOV safety controller, achieving stable 0.55–0.71 m wall tracking at 1–2 m/s with sub-0.25 m emergency braking",
       "Implemented and benchmarked A* and RRT planners over an occupancy grid and a pure-pursuit controller with off-path recovery, completing the 400 m race lane at a 95% success rate on a physical autonomous racecar",
     ],
-    media: [],
+    media: [
+      {
+        type: "video",
+        src: "/media/rss/demo1.mp4",
+        poster: "/media/rss/demo1-poster.jpg",
+        caption: "Autonomous run on the indoor track",
+      },
+      {
+        type: "video",
+        src: "/media/rss/demo2.mp4",
+        poster: "/media/rss/demo2-poster.jpg",
+        caption: "Lane-detection overlay with recorded vs. synthesized steering commands",
+      },
+    ],
     featured: true,
     links: [
       { label: "Final Challenge", url: "https://github.com/rss2026-7/final_challenge2026" },
@@ -275,31 +288,5 @@ export const projects: Project[] = [
     links: [
       { label: "Slides", url: "https://pitch.com/v/busmate-58bd7h", icon: "external" },
     ],
-  },
-  {
-    slug: "rss-labs",
-    title: "Robotics Science & Systems — Lab Highlights",
-    dates: "Coursework",
-    stack: "ROS 2, Control, State Estimation",
-    summary:
-      "Selected lab demos from MIT's Robotics Science & Systems course, covering control and autonomy on a physical racecar platform.",
-    bullets: [
-      "Coursework labs applying control, estimation, and planning techniques on a physical racecar platform",
-    ],
-    media: [
-      {
-        type: "video",
-        src: "/media/rss/demo1.mp4",
-        poster: "/media/rss/demo1-poster.jpg",
-        caption: "Lab demo",
-      },
-      {
-        type: "video",
-        src: "/media/rss/demo2.mp4",
-        poster: "/media/rss/demo2-poster.jpg",
-        caption: "Final lab project",
-      },
-    ],
-    featured: false,
   },
 ];
