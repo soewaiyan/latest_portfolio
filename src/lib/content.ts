@@ -114,7 +114,7 @@ export type MediaItem =
   | { type: "stl"; src: string; caption?: string }
   | { type: "pdf"; src: string; caption?: string };
 
-export type CodeLink = { label: string; url: string };
+export type CodeLink = { label: string; url: string; icon?: "github" | "external" };
 
 export type Project = {
   slug: string;
@@ -272,6 +272,9 @@ export const projects: Project[] = [
       },
     ],
     featured: false,
+    links: [
+      { label: "Slides", url: "https://pitch.com/v/busmate-58bd7h", icon: "external" },
+    ],
   },
   {
     slug: "rss-labs",
