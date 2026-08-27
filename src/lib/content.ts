@@ -256,6 +256,7 @@ export const projects: Project[] = [
     stack: "Arduino, Multispectral Sensing, Signal Processing",
     summary:
       "A calibrated multispectral sensing system for autonomous soil nutrient detection, co-authored as a research paper presented at NCUR 2025.",
+    cover: "/media/soil/cover.jpg",
     bullets: [
       "Programmed the Arduino IDE to calibrate an Adafruit AS7341 multispectral sensor for soil nutrient detection",
       "Designed and assembled the sensor hardware and communication interface for an autonomous soil-analysis system",
