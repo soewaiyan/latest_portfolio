@@ -198,6 +198,7 @@ export const projects: Project[] = [
     stack: "Python, C++, ROS 2, OpenCV",
     summary:
       "A full-stack perception, planning, and control system for a physical autonomous racecar, built with a team of 5.",
+    cover: "/media/racecar/cover.jpg",
     bullets: [
       "Built a camera-based visual servoing pipeline (HSV segmentation, SIFT, YOLO, homography ground-plane projection) for real-time detection and localization, reaching 0.79 median IoU and 1.5 cm mean positioning error",
       "Designed a LiDAR wall-following controller (PD control + RANSAC line fitting) and an independent >180°-FOV safety controller, achieving stable 0.55–0.71 m wall tracking at 1–2 m/s with sub-0.25 m emergency braking",
