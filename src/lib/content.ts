@@ -273,6 +273,7 @@ export const projects: Project[] = [
     stack: "IoT, GPS, Figma",
     summary:
       "An affordable IoT-based school bus tracking prototype, built with a team of 4 — 1st place, 2024 Perimeter College Innovative Challenge.",
+    cover: "/media/busmate/cover.jpg",
     bullets: [
       "Developed an affordable IoT-based school bus tracking prototype using a low-cost GPS sensor; led user research and prototype design in Figma",
       "Won 1st Place in the 2024 Perimeter College Innovative Challenge Competition",
