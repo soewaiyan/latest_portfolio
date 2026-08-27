@@ -234,6 +234,7 @@ export const projects: Project[] = [
     stack: "3D Printing, Electronics, Embedded Control",
     summary:
       "Reconfigurable joint and linkage hardware for robot morphology optimization, designed and fabricated at CSAIL.",
+    cover: "/media/csail/cover.jpg",
     bullets: [
       "Designed and prototyped modular robot hardware, integrating sensors, actuators, and microcontrollers via 3D printing, electronics simulation, and embedded control",
       "Fabricated and tested reconfigurable hardware prototypes for robot morphology optimization",
