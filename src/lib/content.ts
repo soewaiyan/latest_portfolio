@@ -147,12 +147,6 @@ export const projects: Project[] = [
     media: [
       {
         type: "video",
-        src: "/media/elevator/demo1.mp4",
-        poster: "/media/elevator/demo1-poster.jpg",
-        caption: "Arm locating and pressing an elevator call button",
-      },
-      {
-        type: "video",
         src: "/media/elevator/demo1-cv-zoom.mp4",
         poster: "/media/elevator/demo1-cv-zoom-poster.jpg",
         caption:
@@ -160,8 +154,8 @@ export const projects: Project[] = [
       },
       {
         type: "video",
-        src: "/media/elevator/demo2.mp4",
-        poster: "/media/elevator/demo2-poster.jpg",
+        src: "/media/elevator/demo3.mp4",
+        poster: "/media/elevator/demo3-poster.jpg",
         caption: "Full pipeline run, detection through actuation",
       },
     ],
